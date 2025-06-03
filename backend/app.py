@@ -8,10 +8,17 @@ from functools import wraps
 from anomaly import parse_log_file  # ⬅️ Import from anomaly.py
 
 app = Flask(__name__)
-CORS(app)
 
-# Secret key for JWT
-SECRET_KEY = 'super-secret-key'
+# Configure CORS for production and development
+if os.getenv('FLASK_ENV') == 'production':
+    # In production, allow your Vercel domain
+    CORS(app, origins=["https://*.vercel.app", "https://your-domain.com"])
+else:
+    # In development, allow localhost
+    CORS(app, origins=["http://localhost:3000"])
+
+# Secret key for JWT - use environment variable in production
+SECRET_KEY = os.getenv('SECRET_KEY', 'super-secret-key')
 
 # Dummy user database
 USERS = {
@@ -88,4 +95,6 @@ def upload():
 # Run App
 # ---------------------
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    # Get port from environment variable for deployment
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port, debug=False)

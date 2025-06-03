@@ -5,6 +5,9 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
 
+// API URL from environment variable, fallback to localhost for development
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:10000";
+
 export default function LoginPage() {
   const { setToken } = useAuth();
   const [username, setUsername] = useState("");
@@ -14,7 +17,7 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/login", {
+      const res = await axios.post(`${API_URL}/login`, {
         username,
         password,
       });

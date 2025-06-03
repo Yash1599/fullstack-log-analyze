@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
+// API URL from environment variable, fallback to localhost for development
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:10000";
+
 export default function UploadPage() {
   const { token } = useAuth();
   const router = useRouter();
@@ -30,7 +33,7 @@ export default function UploadPage() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/upload", formData, {
+      const res = await axios.post(`${API_URL}/upload`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
