@@ -72,11 +72,16 @@ Follow the prompts and select the frontend directory.
 
 ### 3. Configure Environment Variables
 
-In your Vercel dashboard, add this environment variable:
+In your Vercel dashboard (NOT in vercel.json), add this environment variable:
 
-```
-NEXT_PUBLIC_API_URL=https://your-render-app-name.onrender.com
-```
+**Important**: Do not add environment variables in `vercel.json`. Use the Vercel dashboard instead.
+
+1. Go to your project in Vercel dashboard
+2. Click "Settings" → "Environment Variables"
+3. Add:
+   - **Name**: `NEXT_PUBLIC_API_URL`
+   - **Value**: `https://your-render-app-name.onrender.com`
+   - **Environments**: Select "Production", "Preview", and "Development"
 
 **Replace** `your-render-app-name` with your actual Render service name.
 
