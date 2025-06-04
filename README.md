@@ -197,7 +197,6 @@ Go to: `http://localhost:3000`
 We've included 4 example log files in **two convenient locations**:
 
 ### 📁 File Locations:
-- **`data/`** folder (root of project) - For general testing
 - **`backend/sample_logs/`** folder - For easy backend testing and development
 
 ### 🎯 Available Files:
@@ -240,7 +239,7 @@ We've included 4 example log files in **two convenient locations**:
 ### 🔧 How to Access Sample Files:
 
 #### From Web Interface:
-1. Navigate to either `data/` or `backend/sample_logs/` folder
+1. Navigate to either `backend/sample_logs/` folder
 2. Select any of the example files when uploading
 3. Click "Upload and Analyze"
 
@@ -360,10 +359,5 @@ fullstack-log-analyzer/
 │       ├── example2_suspicious.log
 │       ├── example3_mixed.log
 │       └── example4_realworld.log
-├── data/                   # Example log files for testing (duplicate location)
-│   ├── example1_normal.log
-│   ├── example2_suspicious.log
-│   ├── example3_mixed.log
-│   └── example4_realworld.log
 └── README.md               # This file!
 ```
