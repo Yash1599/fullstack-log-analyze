@@ -42,10 +42,17 @@ npm run dev
 1. Open your web browser
 2. Go to: `http://localhost:3000`
 3. Click "Sign Up" and create an account
-4. Upload one of these test files:
-   - `data/example1_normal.log` (normal traffic)
-   - `data/example2_suspicious.log` (hacker attack)
-   - `data/example3_mixed.log` (mixed activity)
+4. Upload one of these test files from either location:
+   - **From `data/` folder:**
+     - `data/example1_normal.log` (normal traffic)
+     - `data/example2_suspicious.log` (hacker attack)
+     - `data/example3_mixed.log` (mixed activity)
+     - `data/example4_realworld.log` (advanced patterns)
+   - **From `backend/sample_logs/` folder:**
+     - `backend/sample_logs/example1_normal.log`
+     - `backend/sample_logs/example2_suspicious.log`
+     - `backend/sample_logs/example3_mixed.log`
+     - `backend/sample_logs/example4_realworld.log`
 5. See the AI detect anomalies! 🔍
 
 ## 🎉 That's It!

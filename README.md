@@ -194,7 +194,13 @@ Go to: `http://localhost:3000`
 
 ## 📊 Example Log Files for Testing
 
-We've included 4 example log files in the `data/` folder:
+We've included 4 example log files in **two convenient locations**:
+
+### 📁 File Locations:
+- **`data/`** folder (root of project) - For general testing
+- **`backend/sample_logs/`** folder - For easy backend testing and development
+
+### 🎯 Available Files:
 
 ### 1. `example1_normal.log` - Clean Traffic
 **What's in it**: Normal website visitors doing normal things
@@ -230,6 +236,22 @@ We've included 4 example log files in the `data/` folder:
 - **Config file searches**: Trying to find sensitive files like `config.php`, `backup.sql`
 
 **Expected Result**: Multiple attack patterns detected with varying confidence levels
+
+### 🔧 How to Access Sample Files:
+
+#### From Web Interface:
+1. Navigate to either `data/` or `backend/sample_logs/` folder
+2. Select any of the example files when uploading
+3. Click "Upload and Analyze"
+
+#### From Python Code (Backend Development):
+```python
+from anomaly import parse_log_file
+
+# Use files from backend/sample_logs/ for easy testing
+results = parse_log_file('sample_logs/example1_normal.log')
+print(f"Found {len([r for r in results if r['anomaly']])} anomalies")
+```
 
 ---
 
@@ -331,8 +353,14 @@ fullstack-log-analyzer/
 │   ├── anomaly.py          # AI detection logic
 │   ├── auth.py             # User login/signup
 │   ├── requirements.txt    # Python dependencies
-│   └── uploads/            # Where uploaded files go
-├── data/                   # Example log files for testing
+│   ├── uploads/            # Where uploaded files go
+│   └── sample_logs/        # Example log files for testing
+│       ├── README.md       # Sample files documentation
+│       ├── example1_normal.log
+│       ├── example2_suspicious.log
+│       ├── example3_mixed.log
+│       └── example4_realworld.log
+├── data/                   # Example log files for testing (duplicate location)
 │   ├── example1_normal.log
 │   ├── example2_suspicious.log
 │   ├── example3_mixed.log
