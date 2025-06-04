@@ -121,8 +121,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from auth import signup, login, token_required  # 🔐 Auth functions + JWT decorator
-from anomaly import parse_log_file  # 🧠 Anomaly detection
 import os
+
+# 🧠 Anomaly detection with fallback for production
+try:
+    from anomaly import parse_log_file  # Try full ML version first
+    print("✅ Using full ML-powered anomaly detection")
+except ImportError as e:
+    print(f"⚠️  ML libraries not available: {e}")
+    print("🔄 Falling back to lightweight anomaly detection")
+    from anomaly_lite import parse_log_file  # Fallback to lightweight version
 
 app = Flask(__name__)
 CORS(app)  # Enable Cross-Origin Requests (for frontend integration)
